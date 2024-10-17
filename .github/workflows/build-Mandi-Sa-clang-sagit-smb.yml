@@ -16,7 +16,7 @@ jobs:
         cat config.env | grep KERNEL_SOURCE= >> $GITHUB_ENV
         cat config.env | grep KERNEL_SOURCE_BRANCH= >> $GITHUB_ENV
         cat config.env | grep KERNEL_CONFIG= >> $GITHUB_ENV
-        echo 'KERNEL_ZIP_NAME=sagit-lxc-ksu' >> $GITHUB_ENV
+        cat config.env | grep KERNEL_ZIP_NAME= >> $GITHUB_ENV
         cat config.env | grep ENABLE_KVM= >> $GITHUB_ENV
         cat config.env | grep ENABLE_LXC_DOCKER= >> $GITHUB_ENV
         cat config.env | grep KERNEL_IMAGE_NAME= >> $GITHUB_ENV
@@ -43,6 +43,8 @@ jobs:
       run: |
         cd $GITHUB_WORKSPACE/kernel_workspace
         git clone --recurse-submodules ${{ env.KERNEL_SOURCE }} -b ${{ env.KERNEL_SOURCE_BRANCH }} android-kernel --depth=1
+        rm -rf android-kernel/arch/arm64/configs/${{ env.KERNEL_CONFIG }}
+        cp $GITHUB_WORKSPACE/patches/sagit_lxc_defconfig android-kernel/arch/arm64/configs/${{ env.KERNEL_CONFIG }}
 
 
     - name: 开启lxc和docker配置
