@@ -48,6 +48,7 @@ env.sh里切换python2，即SWITCH_PYTHON=后面填写true
 <br>
 
 ## 感谢
+- [fate-think](https://github.com/fate-think)
 - [AnyKernel3](https://github.com/osm0sis/AnyKernel3)
 - [AOSP](https://android.googlesource.com)
 - [KernelSU](https://github.com/tiann/KernelSU)
