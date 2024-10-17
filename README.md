@@ -45,6 +45,16 @@ CONFIG_BUILD_ARM64_DT_OVERLAY=y
 ### 解决方法
 env.sh里切换python2，即SWITCH_PYTHON=后面填写true
 
+### 编译后的内核启动lxc网络有问题
+
+我的现象是curl可以用, ping 和 apt 都不行
+
+`ping: socket: Permission denied`
+
+可能是开启lxc的config依赖项有些没有开启, 参考云编译改成本地编译就ok了
+
+把本地生成的.config当成defconfig云编译出来的也ok
+
 <br>
 
 ## 感谢
